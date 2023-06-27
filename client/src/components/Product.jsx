@@ -28,9 +28,9 @@ const Product = ({ imageUrl, name, price }) => {
                 <img className='w-full h-[275px] mb-4' src={imageUrl} alt="" />
                 <div className='left w-full font-bold mb-8'>
                   <h2 className='text-[#0F2027]'>{name}</h2>
-                  <p className='mt-1 text-[#FFD700]'>{price}</p>
+                  <p className='mt-1 text-accent'>${price}</p>
                 </div>
-                <button className='bg-[#0F2027] text-white rounded-lg px-8 py-2 w-1/2 flex items-center justify-between'>Buy Now <FaArrowRight /></button>
+                <button className='bg-[#0F2027] text-[#ffff] rounded-lg px-8 py-2 w-1/2 flex items-center justify-between'>Buy Now <FaArrowRight/></button>
             </div>
         </div>
     )

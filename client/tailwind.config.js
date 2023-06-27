@@ -26,6 +26,11 @@ export default {
       extrabold: '800',
       black: '900',
     },
+    colors: {
+      accent: '#FFD700',
+      white: '#ffff',
+      textColor: '#0F2027',
+    }
   },
   plugins: [],
 }

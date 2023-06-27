@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Product from '../components/Product';
+import Product from '../../components/Product';
 
 const Products = () => {
   const [products, setProducts] = useState([])
@@ -19,13 +19,12 @@ useEffect(() => {
 
 
   return (
-    <div id='products' className='w-full p-12 flex flex-col justify-evenly items-center text-white'>
-      <h1 className='font-extrabold text-4xl text-center mb-12'>Our Products</h1>
+    <div id='products' className='w-full p-12 flex flex-col justify-evenly items-center'>
+      <h1 className='font-extrabold text-4xl text-center mb-12 text-textColor'>Our Products</h1>
       <div className='grid lg:grid-cols-3 gap-8 grid-cols-1'>
         {products.map(product => (
           <Product 
             key={product.id}
-            id={product.id}
             name={product.name}
             desc={product.desc}
             imageUrl={product.imageUrl}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaCartShopping, FaBars } from 'react-icons/fa6';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Gallery, Products, Reviews, ShoppingCart } from '../containers';
+import { Link } from 'react-router-dom';
+import { Products} from '../pages/home';
+import { ShoppingCart } from '../pages/shoppingcart';
 
 
 import logo from '../assets/Shop.png';
@@ -11,7 +12,7 @@ import '../index.css';
 const Navbar = () => {
 
   const [isMobile, setisMobile] = useState(false);
-  const [toggleMenu, settoggleMenu] = useState(false);
+  const [toggleMenu, settoggleMenu] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,44 +32,36 @@ const Navbar = () => {
   }
     
   return (
-    <BrowserRouter>
-      <div className='text-white p-4 flex justify-between items-center'>
+      <div className='text-[#0F2027] p-4 flex justify-between items-center'>
         <div className=''>
-          <img src={logo} alt="logo" className='w-[98px]'/>
+          <Link to="/"><img src={logo} alt="logo" className='w-[98px]'/></Link>
         </div>
         <div className='w-1/4'>
           <div className='flex justify-end mr-4'>
             {isMobile ? 
               <FaBars className='text-[36px] cursor-pointer' onClick={handleClick}/> :
               <div className='flex justify-evenly items-center'>
-                <Link className='' to="/gallery">Gallery</Link>
-                <Link className='ml-6' to="/products">Products</Link>
-                <Link className='ml-6' to="/reviews">Reviews</Link>
-                <Link className='ml-6' to="/shoppingcart"><FaCartShopping className='text-[32px]'/></Link>
+                <a className='hover:text-accent' href='#gallery'>Gallery</a>
+                <Link className='ml-6 hover:text-accent' to="/products">Products</Link>
+                <a className='ml-6 hover:text-accent' href="#reviews">Reviews</a>
+                <Link className='ml-6 hover:text-accent' to="/cart"><FaCartShopping className='text-[32px]'/></Link>
               </div>
             }
           </div>
 
           {toggleMenu && isMobile ? 
-            <div className='flex flex-col toggleMenuBg absolute right-0 mr-8 mt-8 border rounded-lg py-8 px-12'>
-              <Link className='hover:text-[#2C5364] mb-4' to="/gallery">Gallery</Link>
-              <Link className='hover:text-[#2C5364] mb-4' to="/products">Products</Link>
-              <Link className='hover:text-[#2C5364] mb-4' to="/reviews">Reviews</Link>
-              <Link className='hover:text-[#2C5364] mb-4' to="/shoppingcart"><FaCartShopping className='text-[32px]' /></Link>
+            <div className='toggleMenuBg absolute w-[150px] h-[250px] z-10 right-0 mr-8 mt-8 border rounded-lg py-8 px-12'>
+              <div className='flex flex-col text-bold items-start justify-evenly'>
+                <a href='#gallery' className='hover:text-accent'>Gallery</a>
+                <Link className='mt-6 hover:text-accent' to="/products">Products</Link>
+                <a className='mt-6 hover:text-accent' href="#reviews">Reviews</a>
+                <Link className='mt-6 hover:text-accent' to="/cart"><FaCartShopping className='text-[32px]'/></Link>
+              </div>
             </div> : 
             null
           }
         </div>
-
-        <Routes>
-          <Route path='/gallery' element={<Gallery />}/>
-          <Route path='/products' element={<Products />}/>
-          <Route path='/reviews' element={<Reviews />}/>
-          <Route path='/shoppingcart' element={<ShoppingCart />}/>
-        </Routes>
       </div>
-    </BrowserRouter> 
-
   )
 }
 
